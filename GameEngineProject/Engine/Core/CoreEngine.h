@@ -8,6 +8,8 @@
 #include "Scene.h"
 #include <memory>
 
+#include "..//Rendering/3D/GameObject.h"
+
 class CoreEngine
 {
 public:
