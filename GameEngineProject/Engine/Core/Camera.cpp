@@ -22,6 +22,12 @@ Camera::Camera() : position(glm::vec3()), fieldOfView(0.0f), forward(glm::vec3()
 
 Camera::~Camera()
 {
+	if (lightSources.size() > 0) {
+		for (auto t : lightSources) {
+			delete t;
+			t = nullptr;
+		}
+	}
 }
 
 void Camera::SetPosition(glm::vec3 position_)
@@ -55,6 +61,16 @@ glm::mat4 Camera::GetOrthographic() const
 glm::vec3 Camera::GetPosition() const
 {
 	return position;
+}
+
+void Camera::AddLightSource(LightSource* lightSource_)
+{
+	lightSources.push_back(lightSource_);
+}
+
+std::vector<LightSource*> Camera::GetLightSources()
+{
+	return lightSources;
 }
 
 void Camera::UpdateCameraVectors()
