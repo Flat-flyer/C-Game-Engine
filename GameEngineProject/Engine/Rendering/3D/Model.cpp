@@ -59,6 +59,11 @@ GLuint Model::GetShaderProgram()
 	return shaderProgram;
 }
 
+BoundingBox Model::GetBoundingBox() const
+{
+	return boundingBox;
+}
+
 glm::mat4 Model::CreateTransform(glm::vec3 position_, float angle_, glm::vec3 rotation_, glm::vec3 scale_) const
 {
 	glm::mat4 model;
@@ -73,6 +78,8 @@ void Model::LoadModel()
 	for (int i = 0; i < obj->GetSubMeshes().size(); i++) {
 		meshes.push_back(new Mesh(obj->GetSubMeshes()[i], shaderProgram));
 	}
+
+	boundingBox = obj->GetBoundingBox();
 	delete obj;
 	obj = nullptr;
 }

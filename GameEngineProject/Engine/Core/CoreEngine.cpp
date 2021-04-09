@@ -33,6 +33,10 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 		return isRunning = false;
 	}
 
+	SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
+
+	MouseEventListener::RegisterEngineObject(this);
+
 	ShaderHandler::GetInstance()->CreateProgram("colourShader", "Engine/Shaders/ColourVertexShader.glsl", "Engine/Shaders/ColourFragmentShader.glsl");
 	ShaderHandler::GetInstance()->CreateProgram("basicShader", "Engine/Shaders/VertexShader.glsl", "Engine/Shaders/FragmentShader.glsl");
 
@@ -53,6 +57,7 @@ void CoreEngine::Run()
 {
 	while (isRunning) { //update and render cycle
 		timer.UpdateFrameTicks();
+		EventListener::Update();
 		Update(timer.GetDeltaTime());
 		Render();
 		SDL_Delay(timer.GetSleepTime(fps));
@@ -105,6 +110,28 @@ void CoreEngine::SetCurrentScene(int sceneNum_)
 void CoreEngine::SetCamera(Camera* camera_)
 {
 	camera = camera_;
+}
+
+void CoreEngine::NotifyOfMousePressed(glm::ivec2 mouse_, int butonType_)
+{
+}
+
+void CoreEngine::NotifyOfMouseReleased(glm::ivec2 mouse_, int butonType_)
+{
+}
+
+void CoreEngine::NotifyOfMouseMove(glm::ivec2 mouse_)
+{
+	if (camera) {
+		camera->ProcessMouseMovement(MouseEventListener::GetMouseOffset());
+	}
+}
+
+void CoreEngine::NotifyOfMouseScroll(int y_)
+{
+	if (camera) {
+		camera->ProcessMouseZoom(y_);
+	}
 }
 
 void CoreEngine::Update(const float deltaTime_)
