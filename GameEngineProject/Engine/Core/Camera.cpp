@@ -63,6 +63,16 @@ glm::vec3 Camera::GetPosition() const
 	return position;
 }
 
+float Camera::GetNearPlane() const
+{
+	return nearPlane;
+}
+
+float Camera::GetFarPlane() const
+{
+	return farPlane;
+}
+
 void Camera::AddLightSource(LightSource* lightSource_)
 {
 	lightSources.push_back(lightSource_);

@@ -43,8 +43,8 @@ public:
 	void SetCurrentScene(int sceneNum_);
 	void SetCamera(Camera* camera_);
 
-	void NotifyOfMousePressed(glm::ivec2 mouse_,int butonType_);
-	void NotifyOfMouseReleased(glm::ivec2 mouse_, int butonType_);
+	void NotifyOfMousePressed(glm::ivec2 mouse_,int buttonType_);
+	void NotifyOfMouseReleased(glm::ivec2 mouse_, int buttonType_);
 	void NotifyOfMouseMove(glm::ivec2 mouse_);
 	void NotifyOfMouseScroll(int y_);
 
