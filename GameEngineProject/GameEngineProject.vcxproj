@@ -135,6 +135,7 @@
     <ClCompile Include="Engine\Core\Camera.cpp" />
     <ClCompile Include="Engine\Core\Debug.cpp" />
     <ClCompile Include="Engine\Core\CoreEngine.cpp" />
+    <ClCompile Include="Engine\Core\OctSpatialPartition.cpp" />
     <ClCompile Include="Engine\Math\CollisionDetection.cpp" />
     <ClCompile Include="Engine\Math\CollisionHandler.cpp" />
     <ClCompile Include="Engine\Math\Plane.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Engine\Core\Debug.h" />
     <ClInclude Include="Engine\Core\CoreEngine.h" />
     <ClInclude Include="Engine\Core\GameInterface.h" />
+    <ClInclude Include="Engine\Core\OctSpatialPartition.h" />
     <ClInclude Include="Engine\Core\Scene.h" />
     <ClInclude Include="Engine\Core\Window.h" />
     <ClInclude Include="Engine\Core\Timer.h" />
